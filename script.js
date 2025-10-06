@@ -1,24 +1,19 @@
-
-    // Mobile menu toggle
     function toggleMenu(){
       const nav = document.querySelector('nav ul');
       nav.classList.toggle('active');
     }
 
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         e.preventDefault();
         const target = document.querySelector(a.getAttribute('href'));
         if(target){
           target.scrollIntoView({behavior:'smooth', block:'start'});
-          // Close mobile menu if open
           document.querySelector('nav ul').classList.remove('active');
         }
       })
     })
 
-    // Scroll progress indicator
     function updateScrollProgress(){
       const scrollTop = window.pageYOffset;
       const docHeight = document.body.scrollHeight - window.innerHeight;
@@ -26,7 +21,6 @@
       document.querySelector('.scroll-progress').style.width = scrollPercent + '%';
     }
 
-    // Header scroll effect
     function handleHeaderScroll(){
       const header = document.querySelector('header');
       if(window.scrollY > 100){
@@ -36,7 +30,6 @@
       }
     }
 
-    // Intersection Observer for animations
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -51,9 +44,7 @@
       });
     }, observerOptions);
 
-    // Observe elements for animation
     document.addEventListener('DOMContentLoaded', () => {
-      // Add animation styles to elements
       const animatedElements = document.querySelectorAll('.card, .project, .skill');
       animatedElements.forEach(el => {
         el.style.opacity = '0';
@@ -62,13 +53,11 @@
         observer.observe(el);
       });
 
-      // Initialize scroll listeners
       window.addEventListener('scroll', () => {
         updateScrollProgress();
         handleHeaderScroll();
       });
-
-      // Close mobile menu when clicking outside
+        
       document.addEventListener('click', (e) => {
         const nav = document.querySelector('nav ul');
         const toggle = document.querySelector('.mobile-toggle');
@@ -77,7 +66,6 @@
         }
       });
 
-      // Add typing effect to hero title
       const heroTitle = document.querySelector('.intro h1');
       if(heroTitle){
         const text = heroTitle.textContent;
@@ -94,7 +82,6 @@
       }
     });
 
-    // Add hover effects to project cards
     document.querySelectorAll('.project').forEach(project => {
       project.addEventListener('mouseenter', () => {
         project.style.transform = 'translateY(-8px) scale(1.02)';
@@ -104,7 +91,6 @@
       });
     });
 
-    // Add click effects to buttons
     document.querySelectorAll('.btn, .cta').forEach(btn => {
       btn.addEventListener('click', function(e){
         const ripple = document.createElement('span');
